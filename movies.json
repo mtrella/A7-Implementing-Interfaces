@@ -1,0 +1,61 @@
+[
+    {
+        "Id": 1,
+        "title": "Toy Story (1995)",
+        "genres": "Adventure|Animation|Children|Comedy|Fantasy"
+        
+    },
+    {
+        "Id": 2,
+        "title": "Jumanji (1995)",
+        "genres": "Adventure|Children|Fantasy"
+    
+    },
+    {
+        "Id": 3,
+        "title": "Grumpier Old Men (1995)",
+        "genres": "Comedy|Romance"
+        
+    },
+    {
+        "Id": 4,
+        "title": "Waiting to Exhale (1995)",
+        "genres": "Comedy|Drama|Romance"
+        
+    },
+    {
+        "Id": 5,
+        "title": "Father of the Bride Part II (1995)",
+        "genres": "Comedy"
+    },
+    {
+        "Id": 6,
+        "title": "Heat (1995)",
+        "genres": "Action|Crime|Thriller"
+        
+    },
+    {
+        "Id": 7,
+        "title": "Sabrina (1995)",
+        "genres": "Comedy|Romance"
+        
+    },
+    {
+        "Id": 8,
+        "title": "Tom and Huck (1995)",
+        "genres": "Adventure|Children"
+        
+    },
+    {
+        "Id": 9,
+        "title": "Sudden Death (1995)",
+        "genres": "Action"
+        
+    },
+    {
+        "Id": 10,
+        "title": "GoldenEye (1995)",
+        "genres": "Action|Adventure|Thriller"
+        
+    }
+]
