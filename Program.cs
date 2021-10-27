@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NLog;
+using System.Linq;
 
 namespace MovieLibrary
 {
@@ -10,10 +11,10 @@ namespace MovieLibrary
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         static void Main(string[] args)
         {
-            string jfile = "movies.json";
-            string mfile = "movies.csv";
-            string sFile = "shows.csv";
-            string vFile = "videos.csv";
+            string jfile = "../../movies.json";
+            string mfile = "../../movies.csv";
+            string sFile = "../../shows.csv";
+            string vFile = "../../videos.csv";
             logger.Info("Program started");
 
             MovieFile movieFile = new MovieFile(mfile);
@@ -22,7 +23,8 @@ namespace MovieLibrary
             JsonRepository jsonrepo = new JsonRepository(jfile);
             
             string choice = "";
-
+            do
+            {
                 Console.WriteLine();
                 Console.WriteLine("Please select an option: ");
                 Console.WriteLine("1. What media type to display");
@@ -61,10 +63,63 @@ namespace MovieLibrary
                     }
                 } else if (choice == "2")
                 {
-                    //Quit the program
-                    Console.WriteLine("You have exited the program");
+                    System.Console.WriteLine("Enter a movie, show, or video to search for: ");
+                    string searchEntry = "";
+                    searchEntry = Console.ReadLine();
+                    logger.Info("Search Entry: {Search}", searchEntry);
+
+                    //Search for a movie/show/video
+
+                    
+                    var movies = from m in movieFile.Movies
+                    select m;
+                    var shows = from s in showFile.Shows
+                    select s;
+                    var videos = from v in videoFile.Videos
+                    select v;
+
+                    if (!String.IsNullOrEmpty(movies))
+                    {
+                        movies = movies.Where(s => s.title.Contains(searchEntry));
+                    }
+                    return;
+
+                    if (!String.IsNullOrEmpty(shows))
+                    {
+                        movies = movies.Where(s => s.title.Contains(searchEntry));
+                    }
+                    return;
+
+                    if (!String.IsNullOrEmpty(videos))
+                    {
+                        movies = movies.Where(s => s.title.Contains(searchEntry));
+                    }
+                    return;
+                
                 }
+            } while (choice == "1" || choice == "2");
+
+            logger.Info("Program has closed");
         }
+
+        public static string[] searchRecord(string searchEntry, string filepath, int positionOfEntry)
+        {
+            positionOfEntry--;
+            string[] recordNotFound = { "Record not found" };
+
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(@filepath);
+
+            }
+            catch(Exception ex)
+            {
+                return recordNotFound;
+                throw new ApplicationException("",ex);
+            }
+        }
+
+    
     }
 }
 
